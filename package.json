@@ -1,0 +1,47 @@
+{
+  "name": "ssr-network-inspector",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.1.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:module": "pnpm --filter @ssr-network-inspector/nuxt dev",
+    "dev:api": "pnpm --filter @ssr-network-inspector/mock-api dev",
+    "dev:playground": "pnpm --filter @ssr-network-inspector/playground dev",
+    "dev:extension": "pnpm --filter @ssr-network-inspector/extension dev",
+    "build": "pnpm build:module && pnpm build:extension",
+    "build:module": "pnpm --filter @ssr-network-inspector/nuxt build",
+    "build:extension": "pnpm --filter @ssr-network-inspector/extension build",
+    "lint": "eslint .",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm test:unit && pnpm test:module",
+    "test:unit": "pnpm --filter @ssr-network-inspector/protocol test && pnpm --filter @ssr-network-inspector/nuxt test:unit && pnpm --filter @ssr-network-inspector/extension test",
+    "test:module": "pnpm --filter @ssr-network-inspector/nuxt test:module",
+    "test:integration": "tsx scripts/integration-test.ts",
+    "verify": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:integration && pnpm build"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "@esbuild/darwin-arm64",
+      "unrs-resolver"
+    ]
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.31.0",
+    "@types/node": "^22.16.5",
+    "concurrently": "^9.2.0",
+    "eslint": "^9.31.0",
+    "eslint-plugin-vue": "^10.3.0",
+    "globals": "^16.3.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.38.0",
+    "vue-eslint-parser": "^10.2.0",
+    "wait-on": "^8.0.4"
+  }
+}
