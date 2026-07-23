@@ -1,5 +1,5 @@
 {
-  "name": "@ssr-network-inspector/playground",
+  "name": "@lavsemen/ssr-network-inspector-playground",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,7 +10,7 @@
     "typecheck": "nuxt prepare"
   },
   "dependencies": {
-    "@ssr-network-inspector/nuxt": "workspace:*",
+    "@lavsemen/ssr-network-inspector": "workspace:*",
     "nuxt": "^4.0.0",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"

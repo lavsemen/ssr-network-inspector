@@ -4,7 +4,7 @@ import {
   createInitialState,
   getFilteredRequests,
 } from '../src/panel/stores/inspector-store'
-import type { InspectorEvent } from '@ssr-network-inspector/protocol'
+import type { InspectorEvent } from '@lavsemen/ssr-network-inspector-protocol'
 
 function started(): InspectorEvent {
   return {

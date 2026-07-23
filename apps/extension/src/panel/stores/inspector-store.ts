@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import type { InspectorEvent, RequestTransport } from '@ssr-network-inspector/protocol'
+import type { InspectorEvent, RequestTransport } from '@lavsemen/ssr-network-inspector-protocol'
 import { statusTone } from '../utils/format'
 
 export interface InspectorSettings {

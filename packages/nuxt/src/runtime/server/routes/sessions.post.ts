@@ -1,7 +1,7 @@
 import { createError, defineEventHandler, getHeader, readBody } from 'h3'
 import { useRuntimeConfig } from '#imports'
 import { getSessionStore } from '../services/session-store'
-import type { CreateSessionRequest, CreateSessionResponse } from '@ssr-network-inspector/protocol'
+import type { CreateSessionRequest, CreateSessionResponse } from '@lavsemen/ssr-network-inspector-protocol'
 
 function extractBearer(header: string | undefined): string | undefined {
   if (!header) {

@@ -44,7 +44,7 @@ importers:
 
   apps/extension:
     dependencies:
-      '@ssr-network-inspector/protocol':
+      '@lavsemen/ssr-network-inspector-protocol':
         specifier: workspace:*
         version: link:../../packages/protocol
       vue:
@@ -91,7 +91,7 @@ importers:
 
   apps/playground:
     dependencies:
-      '@ssr-network-inspector/nuxt':
+      '@lavsemen/ssr-network-inspector':
         specifier: workspace:*
         version: link:../../packages/nuxt
       nuxt:
@@ -113,19 +113,22 @@ importers:
       '@nuxt/kit':
         specifier: ^3.10.0 || ^4.0.0
         version: 4.5.0(magic-string@1.1.0)(magicast@0.5.3)(oxc-parser@0.140.0)(rolldown@1.2.0)(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.2.0)(rollup@4.62.2)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.1)(yaml@2.9.0)))
-      '@ssr-network-inspector/protocol':
-        specifier: workspace:*
-        version: link:../protocol
       defu:
         specifier: ^6.1.4
         version: 6.1.7
       h3:
-        specifier: ^1.15.3
+        specifier: ^1.10.0
         version: 1.15.11
+      ofetch:
+        specifier: ^1.4.0
+        version: 1.5.1
       ufo:
         specifier: ^1.6.1
         version: 1.6.4
     devDependencies:
+      '@lavsemen/ssr-network-inspector-protocol':
+        specifier: workspace:*
+        version: link:../protocol
       '@nuxt/module-builder':
         specifier: ^1.0.1
         version: 1.0.2(@nuxt/cli@3.37.0(@nuxt/schema@4.5.0)(cac@6.7.14)(magicast@0.5.3))(@vue/compiler-core@3.5.40)(esbuild@0.28.1)(typescript@5.9.3)(vue-tsc@3.3.8(typescript@5.9.3))(vue@3.5.40(typescript@5.9.3))

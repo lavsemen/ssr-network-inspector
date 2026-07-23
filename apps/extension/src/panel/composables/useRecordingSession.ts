@@ -1,4 +1,4 @@
-import type { CreateSessionResponse, HealthResponse, InspectorEvent } from '@ssr-network-inspector/protocol'
+import type { CreateSessionResponse, HealthResponse, InspectorEvent } from '@lavsemen/ssr-network-inspector-protocol'
 import type { BrowserAdapter } from '../../shared/browser-adapter'
 import type { InspectorPanelState } from '../stores/inspector-store'
 import { isAbortError, readSseStream } from '../utils/sse-parser'

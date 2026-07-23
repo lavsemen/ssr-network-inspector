@@ -15,7 +15,7 @@ export type { ModuleOptions } from './runtime/types/module'
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: '@ssr-network-inspector/nuxt',
+    name: '@lavsemen/ssr-network-inspector',
     configKey: 'ssrNetworkInspector',
     compatibility: {
       nuxt: '>=3.0.0',
@@ -88,6 +88,7 @@ export {}
 
     addServerHandler({
       route: `${prefix}/health`,
+      method: 'get',
       handler: resolver.resolve('./runtime/server/routes/health.get'),
     })
 

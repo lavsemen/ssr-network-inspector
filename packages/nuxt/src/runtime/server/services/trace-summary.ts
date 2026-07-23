@@ -1,4 +1,4 @@
-import type { TraceSummary } from '@ssr-network-inspector/protocol'
+import type { TraceSummary } from '@lavsemen/ssr-network-inspector-protocol'
 import type { SsrInspectorContext } from '../../types/module'
 
 export function buildTraceSummary(context: SsrInspectorContext): TraceSummary {

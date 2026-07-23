@@ -1,4 +1,4 @@
-import type { RequestErrorInfo } from '@ssr-network-inspector/protocol'
+import type { RequestErrorInfo } from '@lavsemen/ssr-network-inspector-protocol'
 
 const REDACTED = '[REDACTED]'
 

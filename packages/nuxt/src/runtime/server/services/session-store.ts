@@ -1,4 +1,4 @@
-import type { InspectorEvent } from '@ssr-network-inspector/protocol'
+import type { InspectorEvent } from '@lavsemen/ssr-network-inspector-protocol'
 import { createId, createSessionToken } from '../utils/ids'
 import { safeEqual } from '../utils/timing-safe'
 

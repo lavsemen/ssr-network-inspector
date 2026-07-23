@@ -1,5 +1,5 @@
 {
-  "name": "@ssr-network-inspector/extension",
+  "name": "@lavsemen/ssr-network-inspector-extension",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,7 +10,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@ssr-network-inspector/protocol": "workspace:*",
+    "@lavsemen/ssr-network-inspector-protocol": "workspace:*",
     "vue": "^3.5.17"
   },
   "devDependencies": {

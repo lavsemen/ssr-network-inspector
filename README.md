@@ -54,10 +54,16 @@ pnpm dev
 
 ## Установка npm-пакета
 
+```bash
+npm i @lavsemen/ssr-network-inspector
+# yarn add @lavsemen/ssr-network-inspector
+# pnpm add @lavsemen/ssr-network-inspector
+```
+
 ```ts
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ['@ssr-network-inspector/nuxt'],
+  modules: ['@lavsemen/ssr-network-inspector'],
 
   ssrNetworkInspector: {
     enabled: true,
@@ -69,6 +75,13 @@ export default defineNuxtConfig({
 ```env
 NUXT_SSR_INSPECTOR_TOKEN=dev-secret
 NUXT_PUBLIC_MOCK_API_URL=http://localhost:4001
+```
+
+Publish from the monorepo (npmjs, public scope):
+
+```bash
+npm login
+pnpm publish:packages
 ```
 
 ## Использование

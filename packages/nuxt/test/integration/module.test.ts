@@ -1,8 +1,8 @@
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 import { $fetch, setup, url } from '@nuxt/test-utils/e2e'
-import type { CreateSessionResponse, InspectorEvent } from '@ssr-network-inspector/protocol'
-import { isInspectorEvent } from '@ssr-network-inspector/protocol'
+import type { CreateSessionResponse, InspectorEvent } from '@lavsemen/ssr-network-inspector-protocol'
+import { isInspectorEvent } from '@lavsemen/ssr-network-inspector-protocol'
 
 await setup({
   rootDir: fileURLToPath(new URL('../fixtures/basic', import.meta.url)),

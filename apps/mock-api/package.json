@@ -1,5 +1,5 @@
 {
-  "name": "@ssr-network-inspector/mock-api",
+  "name": "@lavsemen/ssr-network-inspector-mock-api",
   "version": "0.1.0",
   "private": true,
   "type": "module",

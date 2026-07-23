@@ -1,7 +1,7 @@
 import { spawn, type ChildProcess } from 'node:child_process'
 import { setTimeout as delay } from 'node:timers/promises'
-import type { CreateSessionResponse, InspectorEvent } from '@ssr-network-inspector/protocol'
-import { isInspectorEvent } from '@ssr-network-inspector/protocol'
+import type { CreateSessionResponse, InspectorEvent } from '@lavsemen/ssr-network-inspector-protocol'
+import { isInspectorEvent } from '@lavsemen/ssr-network-inspector-protocol'
 
 const PLAYGROUND = process.env.PLAYGROUND_URL || 'http://127.0.0.1:3000'
 const MOCK_API = process.env.MOCK_API_URL || 'http://127.0.0.1:4001'
@@ -138,8 +138,8 @@ async function collectEvents(
 }
 
 async function main(): Promise<void> {
-  start('pnpm', ['--filter', '@ssr-network-inspector/mock-api', 'start'])
-  start('pnpm', ['--filter', '@ssr-network-inspector/playground', 'dev'])
+  start('pnpm', ['--filter', '@lavsemen/ssr-network-inspector-mock-api', 'start'])
+  start('pnpm', ['--filter', '@lavsemen/ssr-network-inspector-playground', 'dev'])
 
   await waitForUrl(`${MOCK_API}/health`)
   await waitForUrl(`${PLAYGROUND}/__ssr-network-inspector/health`)

@@ -5,6 +5,6 @@ export default defineBuildConfig({
     'src/module',
   ],
   externals: [
-    '@ssr-network-inspector/protocol',
+    '@lavsemen/ssr-network-inspector-protocol',
   ],
 })

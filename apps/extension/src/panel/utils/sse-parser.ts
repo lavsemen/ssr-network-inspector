@@ -1,4 +1,4 @@
-import { isInspectorEvent, type InspectorEvent } from '@ssr-network-inspector/protocol'
+import { isInspectorEvent, type InspectorEvent } from '@lavsemen/ssr-network-inspector-protocol'
 
 export interface SseParseResult {
   events: InspectorEvent[]

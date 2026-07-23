@@ -1,8 +1,27 @@
 {
-  "name": "@ssr-network-inspector/nuxt",
-  "version": "0.1.0",
+  "name": "@lavsemen/ssr-network-inspector",
+  "version": "0.1.4",
+  "description": "Nuxt module that captures SSR fetches for Chrome DevTools SSR Network Inspector",
   "type": "module",
   "license": "MIT",
+  "author": "lavsemen",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lavsemen/ssr-network-inspector.git",
+    "directory": "packages/nuxt"
+  },
+  "homepage": "https://github.com/lavsemen/ssr-network-inspector#readme",
+  "bugs": {
+    "url": "https://github.com/lavsemen/ssr-network-inspector/issues"
+  },
+  "keywords": [
+    "nuxt",
+    "nuxt-module",
+    "ssr",
+    "devtools",
+    "network-inspector",
+    "ofetch"
+  ],
   "exports": {
     ".": {
       "types": "./dist/types.d.mts",
@@ -31,13 +50,24 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.10.0 || ^4.0.0",
-    "@ssr-network-inspector/protocol": "workspace:*",
     "defu": "^6.1.4",
     "h3": "^1.10.0",
     "ofetch": "^1.4.0",
     "ufo": "^1.6.1"
   },
+  "peerDependencies": {
+    "nuxt": ">=3.10.0"
+  },
+  "peerDependenciesMeta": {
+    "nuxt": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
+    "@lavsemen/ssr-network-inspector-protocol": "workspace:*",
     "@nuxt/module-builder": "^1.0.1",
     "@nuxt/schema": "^4.0.0",
     "@nuxt/test-utils": "^3.19.2",

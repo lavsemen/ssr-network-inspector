@@ -37,10 +37,10 @@ function shutdown() {
 process.on('SIGINT', shutdown)
 process.on('SIGTERM', shutdown)
 
-run('module', 'pnpm', ['--filter', '@ssr-network-inspector/nuxt', 'dev'])
-run('api', 'pnpm', ['--filter', '@ssr-network-inspector/mock-api', 'dev'])
-run('playground', 'pnpm', ['--filter', '@ssr-network-inspector/playground', 'dev'])
-run('extension', 'pnpm', ['--filter', '@ssr-network-inspector/extension', 'dev'])
+run('module', 'pnpm', ['--filter', '@lavsemen/ssr-network-inspector', 'dev'])
+run('api', 'pnpm', ['--filter', '@lavsemen/ssr-network-inspector-mock-api', 'dev'])
+run('playground', 'pnpm', ['--filter', '@lavsemen/ssr-network-inspector-playground', 'dev'])
+run('extension', 'pnpm', ['--filter', '@lavsemen/ssr-network-inspector-extension', 'dev'])
 
 setTimeout(() => {
   console.log(`
