@@ -61,5 +61,32 @@ function update<K extends keyof InspectorSettings>(key: K, value: InspectorSetti
       >
       Remember token
     </label>
+    <label>
+      HTTP Basic username (gateway)
+      <input
+        type="text"
+        :value="settings.basicAuthUsername"
+        placeholder="yt_basic"
+        autocomplete="off"
+        @input="update('basicAuthUsername', ($event.target as HTMLInputElement).value, settings)"
+      >
+    </label>
+    <label>
+      HTTP Basic password (gateway)
+      <input
+        type="password"
+        :value="settings.basicAuthPassword"
+        autocomplete="off"
+        @input="update('basicAuthPassword', ($event.target as HTMLInputElement).value, settings)"
+      >
+    </label>
+    <label class="checkbox">
+      <input
+        type="checkbox"
+        :checked="settings.rememberBasicAuth"
+        @change="update('rememberBasicAuth', ($event.target as HTMLInputElement).checked, settings)"
+      >
+      Remember HTTP Basic credentials
+    </label>
   </div>
 </template>

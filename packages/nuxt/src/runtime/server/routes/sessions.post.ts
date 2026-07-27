@@ -1,15 +1,8 @@
-import { createError, defineEventHandler, getHeader, readBody } from 'h3'
+import { createError, defineEventHandler, readBody } from 'h3'
 import { useRuntimeConfig } from '#imports'
 import { getSessionStore } from '../services/session-store'
+import { extractInspectorBearer } from '../utils/auth'
 import type { CreateSessionRequest, CreateSessionResponse } from '@lavsemen/ssr-network-inspector-protocol'
-
-function extractBearer(header: string | undefined): string | undefined {
-  if (!header) {
-    return undefined
-  }
-  const match = /^Bearer\s+(.+)$/i.exec(header.trim())
-  return match?.[1]
-}
 
 export default defineEventHandler(async (event): Promise<CreateSessionResponse> => {
   const config = useRuntimeConfig(event).ssrNetworkInspector
@@ -18,7 +11,7 @@ export default defineEventHandler(async (event): Promise<CreateSessionResponse> 
     throw createError({ statusCode: 404, statusMessage: 'Inspector disabled' })
   }
 
-  const token = extractBearer(getHeader(event, 'authorization'))
+  const token = extractInspectorBearer(event)
   const store = getSessionStore()
 
   if (!store.validateAdminToken(token, config.authToken)) {

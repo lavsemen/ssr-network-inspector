@@ -82,6 +82,9 @@ async function persistSettings(): Promise<void> {
     pathPrefix: store.state.settings.pathPrefix,
     rememberToken: store.state.settings.rememberToken,
     adminToken: store.state.settings.rememberToken ? store.state.settings.adminToken : '',
+    rememberBasicAuth: store.state.settings.rememberBasicAuth,
+    basicAuthUsername: store.state.settings.rememberBasicAuth ? store.state.settings.basicAuthUsername : '',
+    basicAuthPassword: store.state.settings.rememberBasicAuth ? store.state.settings.basicAuthPassword : '',
   }
 
   await browser.setLocalSettings(settingsKey(origin), payload)
@@ -110,6 +113,9 @@ onMounted(async () => {
       pathPrefix?: string
       rememberToken?: boolean
       adminToken?: string
+      rememberBasicAuth?: boolean
+      basicAuthUsername?: string
+      basicAuthPassword?: string
     }>(settingsKey(origin))
 
     if (saved) {
@@ -118,6 +124,9 @@ onMounted(async () => {
       store.state.settings.pathPrefix = saved.pathPrefix || ''
       store.state.settings.rememberToken = Boolean(saved.rememberToken)
       store.state.settings.adminToken = saved.rememberToken ? (saved.adminToken || '') : ''
+      store.state.settings.rememberBasicAuth = Boolean(saved.rememberBasicAuth)
+      store.state.settings.basicAuthUsername = saved.rememberBasicAuth ? (saved.basicAuthUsername || '') : ''
+      store.state.settings.basicAuthPassword = saved.rememberBasicAuth ? (saved.basicAuthPassword || '') : ''
     }
 
     const detected = detectPlaygroundDefaults(pathname)

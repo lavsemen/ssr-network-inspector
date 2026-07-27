@@ -8,6 +8,10 @@ export interface InspectorSettings {
   pathPrefix: string
   adminToken: string
   rememberToken: boolean
+  /** HTTP Basic for gateway (kgateway). Leaves Authorization free of Bearer conflicts. */
+  basicAuthUsername: string
+  basicAuthPassword: string
+  rememberBasicAuth: boolean
 }
 
 export interface SessionViewModel {
@@ -91,6 +95,9 @@ export function createInitialState(settings?: Partial<InspectorSettings>): Inspe
       pathPrefix: settings?.pathPrefix ?? '',
       adminToken: settings?.adminToken ?? '',
       rememberToken: settings?.rememberToken ?? false,
+      basicAuthUsername: settings?.basicAuthUsername ?? '',
+      basicAuthPassword: settings?.basicAuthPassword ?? '',
+      rememberBasicAuth: settings?.rememberBasicAuth ?? false,
     },
     sessions: {},
     traces: {},

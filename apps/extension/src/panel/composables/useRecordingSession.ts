@@ -1,6 +1,7 @@
 import type { CreateSessionResponse, HealthResponse, InspectorEvent } from '@lavsemen/ssr-network-inspector-protocol'
 import type { BrowserAdapter } from '../../shared/browser-adapter'
 import type { InspectorPanelState } from '../stores/inspector-store'
+import { buildGatewayAuthHeaders, buildInspectorAuthHeaders } from '../utils/auth-headers'
 import { isAbortError, readSseStream } from '../utils/sse-parser'
 
 function joinUrl(origin: string, path: string): string {
@@ -29,6 +30,9 @@ export function createRecordingController(options: {
   async function checkHealth(): Promise<HealthResponse> {
     const response = await fetch(
       joinUrl(options.state.settings.serverOrigin, `${options.state.settings.routePrefix}/health`),
+      {
+        headers: buildGatewayAuthHeaders(options.state.settings),
+      },
     )
     if (!response.ok) {
       throw new Error(`Health check failed (${response.status})`)
@@ -42,7 +46,7 @@ export function createRecordingController(options: {
       {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${options.state.settings.adminToken}`,
+          ...buildInspectorAuthHeaders(options.state.settings, options.state.settings.adminToken),
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -53,7 +57,7 @@ export function createRecordingController(options: {
     )
 
     if (response.status === 401) {
-      throw new Error('Invalid inspector admin token')
+      throw new Error('Invalid inspector admin token or HTTP Basic credentials')
     }
     if (!response.ok) {
       throw new Error(`Failed to create session (${response.status})`)
@@ -77,7 +81,7 @@ export function createRecordingController(options: {
         abortController = new AbortController()
         const response = await fetch(joinUrl(options.state.settings.serverOrigin, current.eventsUrl), {
           headers: {
-            Authorization: `Bearer ${current.sessionToken}`,
+            ...buildInspectorAuthHeaders(options.state.settings, current.sessionToken),
             Accept: 'text/event-stream',
           },
           signal: abortController.signal,
@@ -219,9 +223,7 @@ export function createRecordingController(options: {
           ),
           {
             method: 'DELETE',
-            headers: {
-              Authorization: `Bearer ${session.sessionToken}`,
-            },
+            headers: buildInspectorAuthHeaders(options.state.settings, session.sessionToken),
           },
         )
       }

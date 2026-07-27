@@ -129,6 +129,20 @@ Admin token никогда не попадает в DNR headers. В navigation h
 - `x-ssr-inspector-session`
 - `x-ssr-inspector-token` (session token, не admin token)
 
+### HTTP Basic (gateway) + inspector token
+
+Если перед приложением стоит HTTP Basic (kgateway/nginx), нельзя класть inspector
+token в `Authorization: Bearer` — gateway отвергнет non-Basic и браузер зациклит
+диалог логина.
+
+Расширение в этом случае шлёт:
+
+- `Authorization: Basic …` — креды gateway
+- `X-SSR-Inspector-Authorization: Bearer <token>` — admin/session token
+
+Nuxt-модуль читает Bearer сначала из `X-SSR-Inspector-Authorization`, иначе из
+`Authorization`. Без Basic поведение прежнее (`Authorization: Bearer` only).
+
 ## Ограничения MVP
 
 - видны только `$ssrFetch` и `useSsrFetch`

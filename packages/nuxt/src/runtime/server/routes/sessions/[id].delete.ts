@@ -1,14 +1,7 @@
-import { createError, defineEventHandler, getHeader, getRouterParam } from 'h3'
+import { createError, defineEventHandler, getRouterParam } from 'h3'
 import { useRuntimeConfig } from '#imports'
 import { getSessionStore } from '../../services/session-store'
-
-function extractBearer(header: string | undefined): string | undefined {
-  if (!header) {
-    return undefined
-  }
-  const match = /^Bearer\s+(.+)$/i.exec(header.trim())
-  return match?.[1]
-}
+import { extractInspectorBearer } from '../../utils/auth'
 
 export default defineEventHandler((event) => {
   const config = useRuntimeConfig(event).ssrNetworkInspector
@@ -22,7 +15,7 @@ export default defineEventHandler((event) => {
     throw createError({ statusCode: 400, statusMessage: 'session id required' })
   }
 
-  const token = extractBearer(getHeader(event, 'authorization'))
+  const token = extractInspectorBearer(event)
   const store = getSessionStore()
 
   const bySession = token ? store.validateSession(sessionId, token) : undefined

@@ -123,6 +123,22 @@ describe('ssr network inspector module', () => {
     expect(session.eventsUrl).toContain(session.sessionId)
   })
 
+  it('accepts admin token via X-SSR-Inspector-Authorization when Authorization is Basic', async () => {
+    const session = await $fetch<CreateSessionResponse>('/__ssr-network-inspector/sessions', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Basic eXQ6eXQ=',
+        'X-SSR-Inspector-Authorization': 'Bearer dev-secret',
+      },
+      body: {
+        clientId: 'basic-compat-client',
+        pageOrigin: 'http://localhost:3000',
+      },
+    })
+    expect(session.sessionId).toBeTruthy()
+    expect(session.sessionToken).toBeTruthy()
+  })
+
   it('does not activate inspector without headers', async () => {
     const html = await $fetch<string>('/')
     expect(html).toContain('Fixture')

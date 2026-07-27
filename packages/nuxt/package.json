@@ -1,6 +1,6 @@
 {
   "name": "@lavsemen/ssr-network-inspector",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Nuxt module that captures SSR fetches for Chrome DevTools SSR Network Inspector",
   "type": "module",
   "license": "MIT",
